@@ -1,0 +1,585 @@
+/* ===========================
+   共通
+=========================== */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+    padding:20px;
+    background:#f3f2ed;
+    font-family:sans-serif;
+    color:#333;
+
+}
+
+/* ===========================
+   起動画面
+=========================== */
+
+#startPanel{
+
+    position:fixed;
+    inset:0;
+
+    background:white;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    gap:18px;
+
+    padding:30px;
+
+    z-index:9999;
+
+}
+
+#startPanel h1{
+
+    font-size:52px;
+    margin:0;
+
+    color:#2b5d34;
+
+}
+
+#startPanel p{
+
+    font-size:30px;
+    line-height:1.7;
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.typeBtn{
+
+    width:100%;
+    max-width:520px;
+
+    padding:24px;
+
+    font-size:30px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#eeeeee;
+
+}
+
+.typeBtn.selected{
+
+    background:#4caf50;
+
+    color:white;
+
+}
+
+/* ===========================
+   言語選択
+=========================== */
+
+#languageSelect{
+
+    width:100%;
+    max-width:520px;
+
+    text-align:center;
+
+}
+
+#languageSelect p{
+
+    font-size:22px;
+
+    margin:0 0 10px 0;
+
+}
+
+.languageBtn{
+
+    width:48%;
+
+    padding:18px 10px;
+
+    margin:0 1%;
+
+    font-size:24px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#eeeeee;
+
+    color:#333;
+
+}
+
+.languageBtn.selected{
+
+    background:#4caf50;
+
+    color:white;
+
+}
+
+#startGuideBtn{
+
+    width:100%;
+    max-width:520px;
+
+    padding:26px;
+
+    font-size:34px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#ff9800;
+
+    color:white;
+
+}
+
+/* ===========================
+   情報パネル
+=========================== */
+
+.panel{
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+}
+
+#status{
+
+    font-size:22px;
+
+}
+
+#nearestSpot{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+}
+
+#stayTime{
+
+    font-size:22px;
+
+}
+
+/* ===========================
+   ガイド
+=========================== */
+
+#guidePanel{
+
+    display:none;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+/* ===========================
+   写真
+=========================== */
+
+#spotImage{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:14px;
+
+    margin-bottom:20px;
+
+}
+
+/* ===========================
+   タイトル
+=========================== */
+
+#guideTitle{
+
+    font-size:42px;
+
+    color:#2b5d34;
+
+    margin-top:0;
+
+}
+
+/* ===========================
+   案内文
+=========================== */
+
+#guideMessage{
+
+    font-size:30px;
+
+    line-height:1.8;
+
+    white-space:pre-wrap;
+
+}
+
+/* ===========================
+   ボタン
+=========================== */
+
+button{
+
+    width:100%;
+
+    margin-top:16px;
+
+    padding:22px;
+
+    font-size:28px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+}
+
+#goBtn{
+
+    background:#2196f3;
+
+    color:white;
+
+}
+
+#ignoreBtn{
+
+    background:#e0e0e0;
+
+}
+
+#toggleSpotBtn{
+
+    background:#fafafa;
+
+}
+
+/* ===========================
+   チャット
+=========================== */
+
+#chatHistory{
+
+    margin-top:25px;
+
+    padding-bottom:320px;
+
+}
+
+.userMessage{
+
+    background:#d9f0ff;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    margin:12px 0;
+
+    font-size:26px;
+
+}
+
+.aiMessage{
+
+    background:#f7f7f7;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    margin:12px 0;
+
+    font-size:26px;
+
+    line-height:1.8;
+
+}
+
+#chatInput{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+    background:white;
+
+    padding:15px;
+
+    box-shadow:0 -3px 12px rgba(0,0,0,.15);
+
+}
+
+#chatInput h3{
+
+    margin-top:0;
+
+    font-size:30px;
+
+}
+
+.chatDescription{
+
+    font-size:22px;
+
+}
+
+#question{
+
+    width:100%;
+
+    font-size:24px;
+
+    padding:15px;
+
+    border-radius:12px;
+
+}
+
+/* ===========================
+   GoogleMap待機
+=========================== */
+
+#resumeScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    z-index:9998;
+
+}
+
+#resumeScreen h2{
+
+    font-size:42px;
+
+}
+
+#resumeScreen p{
+
+    font-size:28px;
+
+    line-height:1.7;
+
+}
+
+/* ===========================
+   スマホ
+=========================== */
+
+@media(max-width:700px){
+
+    body{
+
+        padding:15px;
+
+    }
+
+    #startPanel h1{
+
+        font-size:42px;
+
+    }
+
+    #startPanel p{
+
+        font-size:24px;
+
+    }
+
+    .typeBtn{
+
+        font-size:26px;
+
+    }
+
+    #startGuideBtn{
+
+        font-size:30px;
+
+    }
+
+    #guideTitle{
+
+        font-size:34px;
+
+    }
+
+    #guideMessage{
+
+        font-size:24px;
+
+    }
+
+}
+
+#distanceSlider{
+
+    width:100%;
+    height:12px;
+
+}
+
+/* =======================
+   探索中画面
+======================= */
+
+#searchPanel{
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    background:white;
+
+    border-radius:18px;
+
+    margin:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+#searchPanel h2{
+
+    font-size:32px;
+
+    margin-bottom:20px;
+
+}
+
+#searchMessage{
+
+    font-size:22px;
+
+    color:#555;
+
+}
+
+#searchIcon{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+    animation:spin 6s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+#debugPanel{
+
+    display:none;
+
+}
+
+#toggleDebugBtn{
+
+    position:fixed;
+
+    top:15px;
+
+    right:15px;
+
+    width:48px;
+
+    height:48px;
+
+    margin:0;
+
+    padding:0;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#1976d2;
+
+    color:white;
+
+    font-size:24px;
+
+    line-height:48px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    z-index:10000;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>まちあるきAIガイド</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    #map {
+      width: 100%;
+      height: 400px;
+      background: #ddd;
+      margin-top: 20px;
+    }
+
+    .setting {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 8px;
+    }
+
+    #distanceValue {
+      font-weight: bold;
+      color: blue;
+      font-size: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- 起動画面 -->
+<!-- ========================= -->
+
+<div id="startPanel">
+
+    <h1>まちあるきAIガイド</h1>
+
+    <p>
+
+        あなたの旅の目的を教えてください。
+
+    </p>
+
+<!-- ========================= -->
+<!-- 言語選択 -->
+<!-- ========================= -->
+
+<div id="languageSelect">
+
+    <p>Language / 言語</p>
+
+    <button
+        type="button"
+        id="japaneseBtn"
+        class="languageBtn selected"
+    >
+        🇯🇵 日本語
+    </button>
+
+    <button
+        type="button"
+        id="englishBtn"
+        class="languageBtn"
+    >
+        🇺🇸 English
+    </button>
+
+</div>
+
+    <button class="typeBtn" data-type="グルメ">
+        🍴 グルメ
+    </button>
+
+    <button class="typeBtn" data-type="癒し・リラックス">
+        🌿 癒し・リラックス
+    </button>
+
+    <button class="typeBtn" data-type="歴史・文化探訪">
+        🏯 歴史・文化探訪
+    </button>
+
+    <button class="typeBtn" data-type="自然体験・アクティビティ">
+        🚴 自然体験・アクティビティ
+    </button>
+
+    <button id="startGuideBtn">
+
+        ▶ ガイド開始
+
+    </button>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- メイン画面 -->
+<!-- ========================= -->
+
+<h1>まちあるきAIガイド Ver1.1.1</h1>
+
+<button id="toggleDebugBtn">
+⚙
+</button>
+
+<div id="debugPanel">
+  <div class="panel">
+
+      <h3>案内開始距離</h3>
+
+      <input
+          type="range"
+          id="distanceSlider"
+          min="30"
+          max="500"
+          step="10"
+          value="30"
+      >
+
+      <p>
+
+          現在：
+
+          <span id="distanceValue">
+
+              30
+
+          </span>
+
+          m
+
+      </p>
+
+  </div>
+
+  <div class="panel">
+
+      <p id="status">
+
+          待機中
+
+      </p>
+
+      <p id="nearestSpot">
+
+          最寄りスポット：なし
+
+      </p>
+
+      <p id="stayTime">
+
+          滞在時間：0秒
+
+      </p>
+
+  </div>
+</div>
+
+<div id="searchPanel">
+
+    <div id="searchIcon">
+        🧭
+    </div>
+
+    <h2>
+
+        探索中
+
+    </h2>
+
+    <p id="searchMessage">
+
+        おすすめスポットを探しています
+
+    </p>
+
+</div>
+
+<!-- ========================= -->
+<!-- ガイド -->
+<!-- ========================= -->
+
+<div id="guidePanel">
+
+    <div id="spotInfo">
+
+        <img id="spotImage">
+
+        <h2 id="guideTitle"></h2>
+
+        <p id="guideMessage"></p>
+
+        <button id="goBtn">
+
+            🧭 行ってみる
+
+        </button>
+
+        <button id="ignoreBtn">
+
+            ❌ ほかをみる
+
+        </button>
+
+    </div>
+
+    <button id="toggleSpotBtn">
+
+        ▲ スポット情報を閉じる
+
+    </button>
+
+    <hr>
+
+    <div id="chatHistory">
+
+    </div>
+
+    <div id="chatInput">
+
+        <h3>
+
+            💬 AIコンシェルジュ
+
+        </h3>
+
+        <p class="chatDescription">
+
+            気になることを自由に質問してください。
+
+        </p>
+
+        <textarea
+            id="question"
+            rows="3"
+            placeholder="例：御朱印はありますか？"
+        ></textarea>
+
+        <button id="sendBtn">
+
+            💬 質問する
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- GoogleMapから戻った画面 -->
+<!-- ========================= -->
+
+<div id="resumeScreen" style="display:none;">
+
+    <h2>
+
+        🧭 ナビゲーション中
+
+    </h2>
+
+    <p>
+
+        Googleマップで目的地へ向かっています。
+
+    </p>
+
+    <p>
+
+        現地に到着したら探索を再開してください。
+
+    </p>
+
+    <button id="resumeBtn">
+
+        ▶ 探索を再開
+
+    </button>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
