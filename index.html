@@ -39,11 +39,9 @@
 
     <h1>まちあるきAIガイド</h1>
 
-    <p>
-
-        あなたの旅の目的を教えてください。
-
-    </p>
+<p id="purposeText">
+    あなたの旅の目的を教えてください。
+</p>
 
 <!-- ========================= -->
 <!-- 言語選択 -->
@@ -71,27 +69,25 @@
 
 </div>
 
-    <button class="typeBtn" data-type="グルメ">
-        🍴 グルメ
-    </button>
+<button class="typeBtn" data-type="グルメ">
+    🍴 <span id="foodText">グルメ</span>
+</button>
 
-    <button class="typeBtn" data-type="癒し・リラックス">
-        🌿 癒し・リラックス
-    </button>
+<button class="typeBtn" data-type="癒し・リラックス">
+    🌿 <span id="relaxText">癒し・リラックス</span>
+</button>
 
-    <button class="typeBtn" data-type="歴史・文化探訪">
-        🏯 歴史・文化探訪
-    </button>
+<button class="typeBtn" data-type="歴史・文化探訪">
+    🏯 <span id="historyText">歴史・文化探訪</span>
+</button>
 
-    <button class="typeBtn" data-type="自然体験・アクティビティ">
-        🚴 自然体験・アクティビティ
-    </button>
+<button class="typeBtn" data-type="自然体験・アクティビティ">
+    🚴 <span id="activityText">自然体験・アクティビティ</span>
+</button>
 
-    <button id="startGuideBtn">
-
-        ▶ ガイド開始
-
-    </button>
+<button id="startGuideBtn">
+    ▶ <span id="startGuideText">ガイド開始</span>
+</button>
 
 </div>
 
@@ -284,6 +280,50 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const japaneseBtn = document.getElementById("japaneseBtn");
+const englishBtn = document.getElementById("englishBtn");
+
+function changeLanguage(lang) {
+
+    const isEnglish = lang === "en";
+
+    document.documentElement.lang = isEnglish ? "en" : "ja";
+
+    document.getElementById("purposeText").textContent =
+        isEnglish
+            ? "What are you looking for on your trip?"
+            : "あなたの旅の目的を教えてください。";
+
+    document.getElementById("foodText").textContent =
+        isEnglish ? "Food & Drink" : "グルメ";
+
+    document.getElementById("relaxText").textContent =
+        isEnglish ? "Relaxation & Wellness" : "癒し・リラックス";
+
+    document.getElementById("historyText").textContent =
+        isEnglish ? "History & Culture" : "歴史・文化探訪";
+
+    document.getElementById("activityText").textContent =
+        isEnglish ? "Nature & Activities" : "自然体験・アクティビティ";
+
+    document.getElementById("startGuideText").textContent =
+        isEnglish ? "Start Guide" : "ガイド開始";
+
+    japaneseBtn.classList.toggle("selected", !isEnglish);
+    englishBtn.classList.toggle("selected", isEnglish);
+}
+
+japaneseBtn.addEventListener("click", () => {
+    changeLanguage("ja");
+});
+
+englishBtn.addEventListener("click", () => {
+    changeLanguage("en");
+});
+</script>
+
 <script src="main.js"></script>
 
 </body>
