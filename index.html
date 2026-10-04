@@ -105,7 +105,7 @@
 <div id="debugPanel">
   <div class="panel">
 
-      <h3>案内開始距離</h3>
+      <h3 id="distanceTitle">案内開始距離</h3>
 
       <input
           type="range"
@@ -116,19 +116,11 @@
           value="500"
       >
 
-      <p>
-
-          現在：
-
-          <span id="distanceValue">
-
-              500
-
-          </span>
-
-          m
-
-      </p>
+<p>
+    <span id="currentDistanceText">現在：</span>
+    <span id="distanceValue">500</span>
+    m
+</p>
 
   </div>
 
@@ -161,17 +153,13 @@
         🧭
     </div>
 
-    <h2>
+<h2 id="searchTitle">
+    探索中
+</h2>
 
-        探索中
-
-    </h2>
-
-    <p id="searchMessage">
-
-        おすすめスポットを探しています
-
-    </p>
+<p id="searchMessage">
+    おすすめスポットを探しています
+</p>
 
 </div>
 
@@ -189,25 +177,19 @@
 
         <p id="guideMessage"></p>
 
-        <button id="goBtn">
+<button id="goBtn">
+    🧭 <span id="goText">行ってみる</span>
+</button>
 
-            🧭 行ってみる
-
-        </button>
-
-        <button id="ignoreBtn">
-
-            ❌ ほかをみる
-
-        </button>
+<button id="ignoreBtn">
+    ❌ <span id="ignoreText">ほかをみる</span>
+</button>
 
     </div>
 
-    <button id="toggleSpotBtn">
-
-        ▲ スポット情報を閉じる
-
-    </button>
+<button id="toggleSpotBtn">
+    ▲ <span id="toggleSpotText">スポット情報を閉じる</span>
+</button>
 
     <hr>
 
@@ -217,17 +199,13 @@
 
     <div id="chatInput">
 
-        <h3>
+<h3>
+    💬 AIコンシェルジュ
+</h3>
 
-            💬 AIコンシェルジュ
-
-        </h3>
-
-        <p class="chatDescription">
-
-            気になることを自由に質問してください。
-
-        </p>
+<p class="chatDescription">
+    気になることを自由に質問してください。
+</p>
 
         <textarea
             id="question"
@@ -235,11 +213,9 @@
             placeholder="例：御朱印はありますか？"
         ></textarea>
 
-        <button id="sendBtn">
-
-            💬 質問する
-
-        </button>
+<button id="sendBtn">
+    💬 <span id="sendText">質問する</span>
+</button>
 
     </div>
 
@@ -252,29 +228,21 @@
 
 <div id="resumeScreen" style="display:none;">
 
-    <h2>
+<h2>
+    🧭 <span id="navigationTitle">ナビゲーション中</span>
+</h2>
 
-        🧭 ナビゲーション中
+<p id="navigationMessage">
+    Googleマップで目的地へ向かっています。
+</p>
 
-    </h2>
+<p id="resumeMessage">
+    現地に到着したら探索を再開してください。
+</p>
 
-    <p>
-
-        Googleマップで目的地へ向かっています。
-
-    </p>
-
-    <p>
-
-        現地に到着したら探索を再開してください。
-
-    </p>
-
-    <button id="resumeBtn">
-
-        ▶ 探索を再開
-
-    </button>
+<button id="resumeBtn">
+    ▶ <span id="resumeText">探索を再開</span>
+</button>
 
 </div>
 
@@ -313,6 +281,61 @@ function changeLanguage(lang) {
 
     japaneseBtn.classList.toggle("selected", !isEnglish);
     englishBtn.classList.toggle("selected", isEnglish);
+
+document.getElementById("distanceTitle").textContent =
+    isEnglish ? "Guide Trigger Distance" : "案内開始距離";
+
+document.getElementById("currentDistanceText").textContent =
+    isEnglish ? "Current:" : "現在：";
+
+document.getElementById("searchTitle").textContent =
+    isEnglish ? "Exploring" : "探索中";
+
+document.getElementById("searchMessage").textContent =
+    isEnglish
+        ? "Looking for recommended spots nearby"
+        : "おすすめスポットを探しています";
+
+document.getElementById("goText").textContent =
+    isEnglish ? "Take me there" : "行ってみる";
+
+document.getElementById("ignoreText").textContent =
+    isEnglish ? "Show me another" : "ほかをみる";
+
+document.getElementById("toggleSpotText").textContent =
+    isEnglish ? "Hide spot info" : "スポット情報を閉じる";
+
+document.getElementById("conciergeTitle").textContent =
+    isEnglish ? "AI Concierge" : "AIコンシェルジュ";
+
+document.getElementById("chatDescription").textContent =
+    isEnglish
+        ? "Feel free to ask anything about this spot."
+        : "気になることを自由に質問してください。";
+
+document.getElementById("question").placeholder =
+    isEnglish
+        ? "e.g. Can I get a goshuin here?"
+        : "例：御朱印はありますか？";
+
+document.getElementById("sendText").textContent =
+    isEnglish ? "Ask" : "質問する";
+
+document.getElementById("navigationTitle").textContent =
+    isEnglish ? "Navigating" : "ナビゲーション中";
+
+document.getElementById("navigationMessage").textContent =
+    isEnglish
+        ? "Follow Google Maps to your destination."
+        : "Googleマップで目的地へ向かっています。";
+
+document.getElementById("resumeMessage").textContent =
+    isEnglish
+        ? "When you arrive, resume exploring."
+        : "現地に到着したら探索を再開してください。";
+
+document.getElementById("resumeText").textContent =
+    isEnglish ? "Resume Exploring" : "探索を再開";
 }
 
 japaneseBtn.addEventListener("click", () => {
