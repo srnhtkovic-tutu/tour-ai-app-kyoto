@@ -96,7 +96,7 @@
 <!-- メイン画面 -->
 <!-- ========================= -->
 
-<h1>まちあるきAIガイド Ver1.1.1</h1>
+<h1 id="mainTitle">旅つづき</h1>
 
 <button id="toggleDebugBtn">
 ⚙
@@ -257,6 +257,9 @@ function changeLanguage(lang) {
     const isEnglish = lang === "en";
 
     document.documentElement.lang = isEnglish ? "en" : "ja";
+
+    document.getElementById("mainTitle").textContent =
+    isEnglish ? "Tabitsuzuki" : "旅つづき";
 
     document.getElementById("purposeText").textContent =
         isEnglish
