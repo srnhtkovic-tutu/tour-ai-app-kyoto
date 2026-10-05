@@ -703,10 +703,10 @@ document.getElementById(
 
 document.getElementById(
     "searchMessage"
-).textContent=
-
-"おすすめスポットを探しています";
-
+).textContent =
+    document.documentElement.lang === "en"
+        ? "Looking for recommended spots nearby"
+        : "おすすめスポットを探しています";
 }
 
 // =========================
