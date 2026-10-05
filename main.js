@@ -1502,8 +1502,10 @@ document
     // 探索画面へ戻る
     document.getElementById("searchPanel").style.display = "block";
 
-    document.getElementById("searchMessage").textContent =
-        "おすすめスポットを探しています";
+document.getElementById("searchMessage").textContent =
+    document.documentElement.lang === "en"
+        ? "Looking for recommended spots nearby"
+        : "おすすめスポットを探しています";
 
 });
 
