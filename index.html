@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>まちあるきAIガイド</title>
+  <title>旅つづき</title>
   <link rel="stylesheet" href="style.css">
 
   <style>
@@ -37,7 +37,7 @@
 
 <div id="startPanel">
 
-    <h1>旅つづき　Tabitsuzuki</h1>
+    <h1 id="startTitle">旅つづき</h1>
 
 <!-- ========================= -->
 <!-- 言語選択 -->
@@ -257,6 +257,9 @@ function changeLanguage(lang) {
     const isEnglish = lang === "en";
 
     document.documentElement.lang = isEnglish ? "en" : "ja";
+
+    document.getElementById("startTitle").textContent =
+    isEnglish ? "Tabitsuzuki" : "旅つづき";
 
     document.getElementById("mainTitle").textContent =
     isEnglish ? "Tabitsuzuki" : "旅つづき";
